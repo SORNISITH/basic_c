@@ -1,18 +1,20 @@
 #include <stdio.h>
-
-void swap(int *x, int *y);
+#include <stdlib.h>
+#include <string.h>
+void scmp(char *o, char *n);
 int main(int argc, char *argv[]) {
-  int a, b;
-  a = 10;
-  b = 20;
-  swap(&a, &b);
-  printf("A : %d B : %d", a, b);
+  char *originalText = "Helllo owrld";
+  char *new;
+  new = malloc(strlen(originalText));
+  scmp(originalText, new);
+  printf("%s", new);
+
+  free(new);
   return 0;
 }
 
-void swap(int *x, int *y) {
-  int temp;
-  temp = *x;
-  *x = *y;
-  *y = temp;
+void scmp(char *o, char *n) {
+  while ((*n++ = *o++) != '\0') {
+    ;
+  }
 }
