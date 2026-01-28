@@ -16,7 +16,6 @@ int readFileText() {
     perror("file open failed");
     return 1;
   }
-
   printf("%s", buffer);
   fgets(buffer, SIZE, fp);
   // while (fgets(buffer, SIZE, fp) != NULL) {
