@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   int check_anagram_2[len];
 
   memset(check_anagram, 0, sizeof(check_anagram));
-  memset(check_anagram_2, 0, sizeof(check_anagram));
+  memset(check_anagram_2, 0, sizeof(check_anagram_2));
 
   if (len != len_2) {
     printf("The words are not anagrams --- len not eq");
