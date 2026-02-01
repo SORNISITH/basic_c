@@ -23,6 +23,7 @@ int* find_largest(const int n, const int arr[n])
 {
     static int largest;
     largest = arr[0];
+
     for (int i = 1; i < n; i++) {
         if (arr[i] > largest) {
             largest = arr[i];

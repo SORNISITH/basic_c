@@ -65,6 +65,7 @@ void swap(int* a, int* b)
     *a = *b;
     *b = temp;
 }
+
 void p_arr_number(int low, int high, int a[])
 {
     for (int i = low; i <= high; i++) {
@@ -76,3 +77,14 @@ void p_arr_number(int low, int high, int a[])
     }
     printf("\n");
 }
+// void p_arr_number(int low, int high, int a[])
+// {
+//     for (int i = low; i <= high; i++) {
+//         if (i == low) {
+//             printf("%2d", a[i]);
+//         } else {
+//             printf(" , %2d", a[i]);
+//         }
+//     }
+//     printf("\n");
+// }
