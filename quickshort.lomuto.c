@@ -87,4 +87,3 @@ void p_arr_number(int low, int high, int a[])
 //         }
 //     }
 //     printf("\n");
-// }

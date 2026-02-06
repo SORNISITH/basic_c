@@ -3,11 +3,11 @@
 
 #define SIZE 5
 
+void find_two_largest(int n, int* const arr, int* first_large, int* second_large);
 int* find_largest(const int n, const int arr[n]);
-void find_two_largest(const int n, const int arr[n], int* l, int* sl);
 int main(int argc, char* argv[])
 {
-    const int arr[SIZE] = { 8, 2, 1, 3, 88 };
+    int arr[SIZE] = { 8, 2, 1, 3, 88 };
     int largest;
     int second_largest;
     find_two_largest(SIZE, arr, &largest, &second_largest);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     return EXIT_SUCCESS;
 }
 
-int* find_largest(const int n, const int arr[n])
+int* find_largest(const int n, int const arr[n])
 {
     static int largest;
     largest = arr[0];
@@ -32,17 +32,17 @@ int* find_largest(const int n, const int arr[n])
     return &largest;
 }
 
-void find_two_largest(const int n, const int arr[n], int* l, int* sl)
+void find_two_largest(int n, int* const arr, int* first_large, int* second_large)
 {
-    *l = arr[0];
+    int* p = arr;
+    *first_large = arr[0];
+    *second_large = 0;
 
-    for (int i = 1; i < n; i++) {
-        if (arr[i] > *l) {
-            *sl = *l;
-            *l = arr[i];
-        } else if (arr[i] < *l && arr[i] > *sl) {
-            *sl = arr[i];
+    while (++p < arr + n) {
+        if (*p > *first_large) {
+            *first_large = *p;
+        } else if (*p > *second_large) {
+            *second_large = *p;
         }
-        printf("-  %d\n", *sl);
     }
 }
