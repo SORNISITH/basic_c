@@ -1,16 +1,16 @@
+#include "reminder.h"
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_MSG 60
-#define MAX_REMAINDER 50
 
 void add_reminder(char (*msg)[MAX_MSG], int* index);
 void print_reminder(char (*msg)[MAX_MSG], int index);
 int read_line_input(char* str, int n);
 void get_date_input(char* date);
 
-int main(int argc, char* argv[])
+int reminder_init()
 {
 
     char msg[MAX_REMAINDER][MAX_MSG];
@@ -45,6 +45,7 @@ void print_reminder(char (*msg)[MAX_MSG], int index)
         printf("_ %s \n", *(msg + i));
     }
 }
+
 void add_reminder(char (*msg)[MAX_MSG], int* index)
 {
     char date_str[32], msg_str[MAX_MSG + 1];

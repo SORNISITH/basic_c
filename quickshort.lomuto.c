@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 26
+
 void p_arr_number(int low, int high, int a[]);
 int partition(int a[], int low, int high);
 void swap(int* a, int* b);
@@ -58,6 +59,7 @@ void quick_short(int a[], int low, int high)
         quick_short(a, pivot + 1, high);
     }
 }
+
 void swap(int* a, int* b)
 {
     int temp;
