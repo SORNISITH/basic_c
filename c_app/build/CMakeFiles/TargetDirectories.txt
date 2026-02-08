@@ -1,0 +1,3 @@
+/home/nz/nz_work_space/js/c_app/build/CMakeFiles/nz_app.dir
+/home/nz/nz_work_space/js/c_app/build/CMakeFiles/edit_cache.dir
+/home/nz/nz_work_space/js/c_app/build/CMakeFiles/rebuild_cache.dir

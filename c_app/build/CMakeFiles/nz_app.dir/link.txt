@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/nz_app.dir/link.d CMakeFiles/nz_app.dir/main.c.o CMakeFiles/nz_app.dir/quicksort.c.o CMakeFiles/nz_app.dir/util.c.o -o nz_app
