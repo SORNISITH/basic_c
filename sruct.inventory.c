@@ -85,9 +85,13 @@ void display_all_inventory(void)
         printf("\t Welcome to INVENTORY\n");
         printf("\t --------------------\n");
         printf("\t OBJ \tID \t NAME \t\t\t COUNT \n");
+        // for (int i = current_inventory - 1; i >= 0; i--) {
+        //     get_inventory(i);
+        // }
         for (int i = 0; i < current_inventory; i++) {
             get_inventory(i);
         }
+
     } else {
         system("clear");
         printf("\t N0 INVENT0RY F0UND!\n");
