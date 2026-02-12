@@ -56,25 +56,3 @@ Node* create_note(int value)
     new_node->next = NULL;
     return new_node;
 }
-
-Node* insertion_list()
-{
-    Node* List = NULL;
-    for (int i = 1; i <= 5; i++) {
-        Node* newNode = malloc(sizeof(Node));
-        if (newNode == NULL) {
-            return NULL;
-        }
-        newNode->value = i * 2;
-        newNode->next = List;
-        List = newNode;
-    }
-
-    Node* ptr = List;
-    while (ptr != NULL) {
-        printf("%d\n", ptr->value);
-        ptr = ptr->next;
-    }
-
-    return List;
-}
