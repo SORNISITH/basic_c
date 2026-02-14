@@ -27,6 +27,7 @@ struct {
     char name[NAME_LEN];
     int count;
 } INVENTORY[MAX_PART];
+
 int current_inventory = 0;
 
 int main(int argc, char* argv[])

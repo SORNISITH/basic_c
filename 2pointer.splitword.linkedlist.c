@@ -100,10 +100,9 @@ void destroy_list(arr_word* list)
     }
 }
 
-char* reverse(char* stx)
+char* reverse(char* restrict stx)
 {
     char* str = strdup(stx);
-
     int len = strlen(stx);
     char *h, *t;
     h = str;
