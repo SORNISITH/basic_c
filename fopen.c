@@ -35,12 +35,6 @@ int main(int argc, char* argv[])
 
     fread(tmp, 1L, size, s_ori);
 
-    rewind(s_ori);
-    int ch;
-    while ((ch = fgetc(s_ori)) != '\0') {
-        printf("%c-\n", ch);
-    }
-
     printf("%s", tmp);
     fwrite(tmp, 1L, size - 1, s_dest);
 

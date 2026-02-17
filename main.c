@@ -1,11 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#define YES 1
+#define NO 0
+
 int main(int argc, char* argv[])
 {
+    int c, nl = 0, nw = 0, nc = 0, inword;
 
-    printf("%#012.5g\n", 83.7361);
-    printf("%#012.5g\n", 29748.6607);
-    printf("%#012.5g\n", 1054932234.0);
-    printf("%#012.5g\n", 0.0000235218);
+    while ((c = getchar()) != EOF) {
+        ++nc;
+        if (c >= 33 && c <= 127) {
+            ++nw;
+            inword = YES;
+        }
+        if (c == '\n') {
+            ++nl;
+            inword = NO;
+        }
+    }
+    printf("%d - %d - %d \n", nl, nw, nc);
+
     return EXIT_SUCCESS;
 }
