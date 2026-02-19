@@ -31,12 +31,12 @@ int main(int argc, char* argv[])
 
 void enque(Que* q, int value)
 {
-    Node* node = create_note(value);
+    Node* NODE = create_note(value);
     if (q->Front == NULL) {
-        q->Front = q->Rear = node;
+        q->Front = q->Rear = NODE;
     } else {
-        q->Rear->next = node;
-        q->Rear = node;
+        q->Rear->next = NODE;
+        q->Rear = NODE;
     }
     q->Size++;
 }
@@ -51,8 +51,8 @@ Que* create_que()
 
 Node* create_note(int value)
 {
-    Node* new_node = malloc(sizeof(Node));
-    new_node->value = value;
-    new_node->next = NULL;
-    return new_node;
+    Node* new_NODE = malloc(sizeof(Node));
+    new_NODE->value = value;
+    new_NODE->next = NULL;
+    return new_NODE;
 }

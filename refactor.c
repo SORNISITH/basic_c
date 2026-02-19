@@ -7,14 +7,17 @@ typedef struct Node {
     struct Node* prev; // doubly test
 } Node;
 
-Node* Front = NULL;
-Node* Rear = NULL;
+typedef struct LINKED_LIST {
+    Node* Front;
+    Node* Rear;
+} LINKED_LIST;
 
 Node* new_NODE(int value);
 void free_que_list(Node* head);
 void enque(int value);
 void display_que_list(Node* head);
-void deque()
+
+void deque(Node* Front)
 {
     Node* temp = Front->next;
     free(Front);

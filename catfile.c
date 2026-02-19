@@ -49,6 +49,5 @@ char* catfile(char* fileName)
     fread(buffer, 1L, size, fp);
     buffer[size] = '\0';
     fclose(fp);
-
     return buffer;
 }

@@ -10,8 +10,8 @@ typedef struct arr_word {
 
 char* reverse(char* str);
 void destroy_list(arr_word* list);
-arr_word* new_node(char* str);
-arr_word* create_node(char* str);
+arr_word* new_NODE(char* str);
+arr_word* create_NODE(char* str);
 void push_p(arr_word** head, char* word);
 
 void split_word(arr_word** head, char* sentence)
@@ -42,25 +42,25 @@ void split_word(arr_word** head, char* sentence)
 void push_p(arr_word** head, char* word)
 {
 
-    arr_word* new_node = create_node(word);
+    arr_word* new_NODE = create_NODE(word);
     if (*head == NULL) {
-        *head = new_node;
+        *head = new_NODE;
 
         return;
     }
-    new_node->myword = word;
-    new_node->next = *head;
-    *head = new_node;
+    new_NODE->myword = word;
+    new_NODE->next = *head;
+    *head = new_NODE;
 }
 
-arr_word* create_node(char* str)
+arr_word* create_NODE(char* str)
 {
-    arr_word* node = malloc(sizeof(arr_word));
-    if (node == NULL)
+    arr_word* NODE = malloc(sizeof(arr_word));
+    if (NODE == NULL)
         return NULL;
-    node->myword = str;
-    node->next = NULL;
-    return node;
+    NODE->myword = str;
+    NODE->next = NULL;
+    return NODE;
 }
 void display_list(arr_word* list)
 {

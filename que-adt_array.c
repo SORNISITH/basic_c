@@ -6,6 +6,7 @@ int arr[SIZE] = { 0 };
 
 void deque(int** front, int** rear);
 void enque(int** front, int** rear, int value);
+
 int main(int argc, char* argv[])
 {
     int *front, *rear;

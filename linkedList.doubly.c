@@ -6,7 +6,7 @@ typedef struct Node {
     struct Node* prev;
 } Node;
 
-Node* create_node(int x);
+Node* create_NODE(int x);
 Node* push(Node* head, int value);
 void display_list(Node* list);
 void destroy_list(Node* list);
@@ -59,35 +59,35 @@ void display_list(Node* list)
 
 Node* push(Node* head, int value)
 {
-    Node* new_node = create_node(value);
+    Node* new_NODE = create_NODE(value);
     if (head == NULL) {
-        return new_node;
+        return new_NODE;
     }
-    new_node->next = head;
-    head->prev = new_node;
-    head = new_node;
-    return new_node;
+    new_NODE->next = head;
+    head->prev = new_NODE;
+    head = new_NODE;
+    return new_NODE;
 }
 
 void push_p(Node** head, int value)
 {
-    Node* new_node = create_node(value);
+    Node* new_NODE = create_NODE(value);
     if (*head == NULL) {
-        *head = new_node;
+        *head = new_NODE;
         return;
     }
-    new_node->next = *head;
-    (*head)->prev = new_node;
-    *head = new_node;
+    new_NODE->next = *head;
+    (*head)->prev = new_NODE;
+    *head = new_NODE;
 }
 
-Node* create_node(int value)
+Node* create_NODE(int value)
 {
-    Node* node = malloc(sizeof(Node));
-    if (node == NULL)
+    Node* NODE = malloc(sizeof(Node));
+    if (NODE == NULL)
         return NULL;
-    node->value = value;
-    node->prev = NULL;
-    node->next = NULL;
-    return node;
+    NODE->value = value;
+    NODE->prev = NULL;
+    NODE->next = NULL;
+    return NODE;
 }

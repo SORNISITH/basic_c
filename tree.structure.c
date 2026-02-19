@@ -11,21 +11,21 @@ typedef struct Node {
     struct Node* right;
 } Node;
 
-Node* new_node(int value);
+Node* new_NODE(int value);
 
 void insert(Node** root, int value)
 {
-    Node* n_node = new_node(value);
+    Node* n_NODE = new_NODE(value);
     if (*root == NULL) {
         Sucess_CALL;
-        *root = n_node;
+        *root = n_NODE;
     } else if (value >= (*root)->value) {
         insert(&(*root)->right, value);
-        free(n_node);
+        free(n_NODE);
         Sucess_CALL;
     } else if (value <= (*root)->value) {
         insert(&(*root)->left, value);
-        free(n_node);
+        free(n_NODE);
         Sucess_CALL;
     }
 }
@@ -69,16 +69,16 @@ int main(int argc, char* argv[])
     return EXIT_SUCCESS;
 }
 
-Node* new_node(int value)
+Node* new_NODE(int value)
 {
-    Node* node = malloc(sizeof(Node));
-    if (node == NULL) {
+    Node* NODE = malloc(sizeof(Node));
+    if (NODE == NULL) {
         ERR_CALL;
-        return new_node(value);
+        return new_NODE(value);
     }
-    node->value = value;
-    node->left = NULL;
-    node->right = NULL;
+    NODE->value = value;
+    NODE->left = NULL;
+    NODE->right = NULL;
     Sucess_CALL;
-    return node;
+    return NODE;
 }

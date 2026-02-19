@@ -1,25 +1,37 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define YES 1
-#define NO 0
+struct Node {
+    int value_;
+    struct Node* next_;
+};
 
-int main(int argc, char* argv[])
+union myu {
+    int input;
+    struct {
+        unsigned char b1;
+        unsigned char b2;
+        unsigned char b3;
+        unsigned char b4;
+    } br;
+};
+
+// struct Node* ret_new_node(int value);
+//
+// void push_node(struct Node* (*make_node)(int), int value, struct Node* Head)
+// {
+//     struct Node* new_node = make_node(value);
+// }
+
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    int c, nl = 0, nw = 0, nc = 0, inword;
-
-    while ((c = getchar()) != EOF) {
-        ++nc;
-        if (c >= 33 && c <= 127) {
-            ++nw;
-            inword = YES;
-        }
-        if (c == '\n') {
-            ++nl;
-            inword = NO;
-        }
-    }
-    printf("%d - %d - %d \n", nl, nw, nc);
-
+    union myu* thisis = malloc(sizeof(*thisis));
+    thisis->input = 0xAABBCCDD;
+    printf("%#x\n", thisis->input);
+    printf("%#x\n", thisis->br.b1);
+    printf("%#x\n", thisis->br.b2);
+    printf("%#x\n", thisis->br.b3);
+    printf("%#x\n", thisis->br.b4);
     return EXIT_SUCCESS;
 }
