@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct Node {
-    int value;
+    int valueue;
     struct Node* next;
 } Node;
 
@@ -9,7 +9,7 @@ void display_linked_list(Node* List)
 {
     if (List == NULL)
         return;
-    printf("%d -> ", List->value);
+    printf("%d -> ", List->valueue);
     display_linked_list(List->next);
 }
 
@@ -18,7 +18,7 @@ void display_linked_list_rev(Node* List)
     if (List == NULL)
         return;
     display_linked_list_rev(List->next);
-    printf(" <- %d", List->value);
+    printf(" <- %d", List->valueue);
 }
 
 Node* reverseList(Node* List)
@@ -40,7 +40,7 @@ Node* create_list(int element)
         if (newNode == NULL) {
             return NULL;
         }
-        newNode->value = 10 * i;
+        newNode->valueue = 10 * i;
         newNode->next = Head;
         Head = newNode;
     }

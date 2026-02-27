@@ -3,7 +3,7 @@
 #include <time.h>
 
 typedef struct Node {
-    int value;
+    int valueue;
     struct Node* next;
 } Node;
 
@@ -13,9 +13,9 @@ typedef struct Que {
     Node* Rear;
 } Que;
 
-void enque(Que* q, int value);
+void enque(Que* q, int valueue);
 Que* create_que();
-Node* create_note(int value);
+Node* create_note(int valueue);
 
 int main(int argc, char* argv[])
 {
@@ -29,9 +29,9 @@ int main(int argc, char* argv[])
     return EXIT_SUCCESS;
 }
 
-void enque(Que* q, int value)
+void enque(Que* q, int valueue)
 {
-    Node* NODE = create_note(value);
+    Node* NODE = create_note(valueue);
     if (q->Front == NULL) {
         q->Front = q->Rear = NODE;
     } else {
@@ -49,10 +49,10 @@ Que* create_que()
     return q;
 }
 
-Node* create_note(int value)
+Node* create_note(int valueue)
 {
     Node* new_NODE = malloc(sizeof(Node));
-    new_NODE->value = value;
+    new_NODE->valueue = valueue;
     new_NODE->next = NULL;
     return new_NODE;
 }

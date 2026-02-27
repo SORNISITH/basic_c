@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 typedef union f {
-    float value;
+    float valueue;
     struct fl {
         unsigned int frag : 23;
         unsigned int expo : 8;

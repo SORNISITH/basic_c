@@ -36,3 +36,28 @@ void print_arr(int a[], int size)
     }
     printf("\n");
 }
+
+// pointer
+
+// int main(int argc, char* argv[])
+// {
+//     int arr[7] = { 10, 5, 3, 1, 6, 8, 9 };
+//     int len = sizeof(arr) / sizeof(int);
+//     int *p_start = arr + 1, *p_end = arr + len - 1;
+//
+//     for (; p_start <= p_end; p_start++) {
+//         for (int k = 0; k <= p_start - arr; k++) {
+//             if (*p_start < arr[k]) {
+//                 *p_start ^= arr[k];
+//                 arr[k] ^= *p_start;
+//                 *p_start ^= arr[k];
+//             }
+//         }
+//     }
+//
+//     for (int i = 0; i < len; i++) {
+//         printf("%d-", arr[i]);
+//     }
+//
+//     return EXIT_SUCCESS;
+// }

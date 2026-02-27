@@ -1,99 +1,153 @@
-#include <limits.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <time.h>
-char* addBinary(char* a, char* b)
-{
 
-    return NULL;
+struct Node {
+    int value;
+    uintptr_t xptr;
+    struct Node* next;
+};
+struct LINKED_LISTED_XOR {
+    struct Node* Head;
+    struct Node* Tail;
+};
+struct LLXOR_STEP {
+    uintptr_t prev;
+    uintptr_t next;
+    struct Node* current;
+} LLXOR_STEP;
+enum MODES {
+    NORMAL,
+    REVERSE
+};
+
+struct LINKED_LISTED_XOR*
+NEW_LIST_XOR();
+struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value);
+void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node* current_list), short mode);
+void LLX_KILLS(struct LINKED_LISTED_XOR* list);
+
+void LLX_display(struct LINKED_LISTED_XOR* list, short mode);
+// UTILITES
+uintptr_t X0R(uintptr_t prev, uintptr_t current);
+void util_print_current_value(struct Node* current_list);
+void util_kill_an_list(struct Node* current_list);
+bool util_check_null_list(struct Node* list);
+
+int main()
+{
+    struct LINKED_LISTED_XOR* mylist = NEW_LIST_XOR();
+
+    mylist = LLX_push(mylist, 10);
+    mylist = LLX_push(mylist, 20);
+    mylist = LLX_push(mylist, 30);
+    mylist = LLX_push(mylist, 30);
+    mylist = LLX_push(mylist, 40);
+    mylist = LLX_push(mylist, 90);
+
+    LLX_display(mylist, NORMAL);
+    printf("\n");
+    LLX_display(mylist, REVERSE);
+    LLX_KILLS(mylist);
+    return 0;
 }
 
-char* addBinary_LOONG_NUMBER_METHOD(char* a, char* b)
+struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value)
 {
-    // can not holder bigger than  64 bit
-    size_t len_of_a = strlen(a);
-    size_t len_of_b = strlen(b);
-    size_t ret_len_result = (len_of_a >= len_of_b) ? len_of_a : len_of_b;
-
-    unsigned long long a_to_number = strtoull(a, NULL, 2);
-    unsigned long long b_to_number = strtoull(b, NULL, 2);
-    if (a_to_number * 2 >= LLONG_MAX || b_to_number * 2 >= LLONG_MAX) {
-        return NULL;
+    struct Node* new_node = malloc(sizeof(*new_node));
+    new_node->value = value;
+    if (util_check_null_list(list->Head)) {
+        list->Head->xptr = X0R((uintptr_t)new_node, list->Head->xptr);
+        new_node->xptr = (uintptr_t)list->Head;
+        new_node->next = list->Head;
+        list->Head = new_node;
+    } else {
+        // init list here !
+        new_node->next = nullptr;
+        new_node->xptr = 0;
+        list->Head = new_node;
+        list->Tail = new_node;
     }
+    return list;
+}
 
-    unsigned long long sum = a_to_number + b_to_number;
-    char* result = calloc(sizeof(char), ret_len_result + 2);
-    bool collect_result_status = false;
-    char* ptr = result;
-    if (sum == 0) {
-        *result = '0';
-        *(ptr + 1) = '\0';
-        return result;
-    }
-    for (int i = 63; i >= 0; i--) {
-        int tmp = ((sum >> i) & 1);
-        if (tmp == 1 && (collect_result_status == false)) {
-            collect_result_status = true;
+void LLX_KILLS(struct LINKED_LISTED_XOR* list)
+{
+    if (list != NULL) {
+        if (util_check_null_list(list->Head)) {
+            LLX_LOOP_NEXT_STEP(list, util_kill_an_list, NORMAL);
         }
-        if (collect_result_status == true) {
-            *ptr = tmp + '0';
-            ptr++;
+        if (list != NULL) {
+            free(list);
         }
     }
-    *ptr = '\0'; // terminate the string
-    return result;
 }
 
-int main(int argc, char* argv[])
+void util_kill_an_list(struct Node* current_list)
 {
-    char* a = "0";
-    char* b = "0";
-    char* x = addBinary(a, b);
-    if (x != NULL) {
-        puts(x);
-        free(x);
+    if (util_check_null_list(current_list)) {
+        free(current_list);
     }
-    return EXIT_SUCCESS;
 }
-char calculate_bit(char a, char b)
+
+void LLX_display(struct LINKED_LISTED_XOR* list, short mode)
 {
-    if ((a == '0' && b == '0') || (b == '1' && a == '1')) {
-        return '0';
+    if (util_check_null_list(list->Head)) {
+        LLX_LOOP_NEXT_STEP(list, util_print_current_value, mode);
     }
-    return '1';
 }
-// char* addBinary_erroh(char* a, char* b)
+
+void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node* current_list), short mode)
+{
+    if (util_check_null_list((mode == NORMAL ? list->Head : list->Tail))) {
+        struct LLXOR_STEP controll_step;
+        controll_step.prev = 0;
+        controll_step.current = (mode == NORMAL) ? list->Head : list->Tail;
+        while (controll_step.current) {
+            controll_step.next = X0R(controll_step.prev, controll_step.current->xptr);
+            controll_step.prev = (uintptr_t)controll_step.current;
+            func(controll_step.current);
+            controll_step.current = (struct Node*)controll_step.next;
+        }
+    }
+}
+
+struct LINKED_LISTED_XOR* NEW_LIST_XOR()
+{
+    struct LINKED_LISTED_XOR* l = malloc(sizeof(*l));
+    l->Head = NULL;
+    l->Tail = NULL;
+    return l;
+}
+uintptr_t X0R(uintptr_t prev, uintptr_t current)
+{
+    return prev ^ current;
+}
+
+void util_print_current_value(struct Node* current_list)
+{
+    if (util_check_null_list(current_list)) {
+        printf("%d -> ", current_list->value);
+    }
+}
+
+bool util_check_null_list(struct Node* list)
+{
+    return list != NULL ? true : false;
+}
+// void LLX_display(struct Node* header)
 // {
-//     size_t len_a = strlen(a);
-//     size_t len_b = strlen(b);
-//     size_t answer_len = len_a >= len_b ? len_a : len_b;
-//
-//     int ja = len_a - 1;
-//     int jb = len_b - 1;
-//
-//     char* answer = calloc(answer_len, sizeof(char));
-//     char* answer_add_space = calloc(answer_len + 1, sizeof(char));
-//     char carry = '0';
-//
-//     for (int i = answer_len; i >= 0; i--, ja--, jb--) {
-//         char temp_a = ((ja < 0) || (a[ja] == '0')) ? '0' : '1';
-//         char temp_b = ((jb < 0) || (b[jb] == '0')) ? '0' : '1';
-//         char result = calculate_bit(temp_a, temp_b);
-//         if (carry == '1') {
-//             answer[i] = calculate_bit(result, carry);
-//         } else {
-//             answer[i] = result;
-//         }
-//         carry = (temp_a == '1' && temp_b == '1') ? '1' : '0';
+//     if (header == nullptr) {
+//         return;
 //     }
-//
-//     printf("%c", carry);
-//     // if (answer[0] == '0') {
-//     //     memmove(answer_add_space, answer + 1, answer_len);
-//     //     free(answer);
-//     //     return answer_add_space;
-//     // }
-//     return answer;
+//     struct LLXOR_MOVE_POSITION* list;
+//     list->current = header;
+//     list->prev = 0;
+//     while (list->current) {
+//         printf("%d -> ", list->current->value);
+//         list->next = X0R(list->prev, list->current->xptr);
+//         list->prev = (uintptr_t)list->current;
+//         list->current = (struct Node*)list->next;
+//     }
 // }

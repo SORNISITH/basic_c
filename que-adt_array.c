@@ -5,7 +5,7 @@
 int arr[SIZE] = { 0 };
 
 void deque(int** front, int** rear);
-void enque(int** front, int** rear, int value);
+void enque(int** front, int** rear, int valueue);
 
 int main(int argc, char* argv[])
 {
@@ -30,9 +30,9 @@ int main(int argc, char* argv[])
     return EXIT_SUCCESS;
 }
 
-void enque(int** front, int** rear, int value)
+void enque(int** front, int** rear, int valueue)
 {
-    **rear = value;
+    **rear = valueue;
     (*rear)++;
 }
 

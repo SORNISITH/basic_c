@@ -10,16 +10,16 @@ int main(int argc, char* argv[])
     char buf[80];
     printf("Enter MSG to be encrypted : ");
     fgets(buf, sizeof(buf), stdin);
-    char* encrypted_text_value = encrypted_text(buf, 3);
+    char* encrypted_text_valueue = encrypted_text(buf, 3);
 
     char* x = "bDNhcm5fdGgzX3IwcDM1";
 
     for (int i = 0; i <= 26; i++) {
 
-        char* decrypted_text_value = decrypted_text(x, i);
-        printf("%s\n", decrypted_text_value);
+        char* decrypted_text_valueue = decrypted_text(x, i);
+        printf("%s\n", decrypted_text_valueue);
     }
-    printf("%s\n", encrypted_text_value);
+    printf("%s\n", encrypted_text_valueue);
     return 0;
 }
 

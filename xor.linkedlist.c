@@ -6,7 +6,7 @@
 #include <string.h>
 
 typedef struct {
-    int value;
+    int valueue;
     uintptr_t xor_Next;
 } NODE;
 
@@ -19,8 +19,8 @@ typedef struct {
 
 void prev_node(llist* list);
 void next_node(llist* list);
-NODE* new_node(int value);
-void push(llist* list, int value);
+NODE* new_node(int valueue);
+void push(llist* list, int valueue);
 
 int main(int argc, char* argv[])
 {
@@ -45,19 +45,19 @@ void next_node(llist* list)
         list->CURRENT = list->head;
         list->PREV = list->CURRENT;
         list->CURRENT->xor_Next = list->CURRENT->xor_Next ^ 0;
-        printf("%d ", list->CURRENT->value);
+        printf("%d ", list->CURRENT->valueue);
         return;
     }
     NODE* next = (NODE*)list->CURRENT->xor_Next;
     list->PREV = list->CURRENT;
     list->CURRENT = next;
-    printf("%d ", list->CURRENT->value);
+    printf("%d ", list->CURRENT->valueue);
     list->CURRENT->xor_Next ^= list->PREV->xor_Next;
 }
 
-void push(llist* list, int value)
+void push(llist* list, int valueue)
 {
-    NODE* cn = new_node(value);
+    NODE* cn = new_node(valueue);
     if (cn == NULL)
         return;
     if (list->head == NULL && list->tail == NULL) {
@@ -70,12 +70,12 @@ void push(llist* list, int value)
     }
 }
 
-NODE* new_node(int value)
+NODE* new_node(int valueue)
 {
     NODE* n = malloc(sizeof(*n));
     memset(n, 0, sizeof(*n));
     if (n == NULL)
         return NULL;
-    n->value = value;
+    n->valueue = valueue;
     return n;
 }

@@ -62,7 +62,7 @@ void digit_12_to_24_clock()
 //                 : (h == 12)             ? 00
 //                                         : ' ';
 //         }
-//         printf("Equivalent 24-h time : %02d%c%02d \n", hh, slash, m);
+//         printf("Equivalueent 24-h time : %02d%c%02d \n", hh, slash, m);
 //     } else if (h >= 1 && h <= 24 && (rm_space_pm[0] != 'P' || rm_space_pm[0] != 'A')) {
 //         if (h == 13)
 //             h = 1;
@@ -89,9 +89,9 @@ void digit_12_to_24_clock()
 //         if (h == 24)
 //             h = 00;
 //         dm = (h >= 1 && h <= 12) ? 'A' : 'P';
-//         printf("Equivalent 12-h time : %2d%c%02d %cM\n", h, slash, m, dm);
+//         printf("Equivalueent 12-h time : %2d%c%02d %cM\n", h, slash, m, dm);
 //     } else {
-//         printf("Invalid Time Format  either 24 nor 12h");
+//         printf("Invalueid Time Format  either 24 nor 12h");
 //     }
 // }
 

@@ -1,14 +1,14 @@
 // /**
 //  * Definition for singly-linked list.
 //  * struct ListNode {
-//  *     int val;
+//  *     int value;
 //  *     struct ListNode *next;
 //  * };
 // /**
 #include <stdio.h>
 #include <stdlib.h>
 struct ListNode {
-    int val;
+    int value;
     struct ListNode* next;
 };
 
@@ -52,7 +52,7 @@ void display(struct ListNode* h)
     if (h == NULL) {
         return;
     }
-    printf("%d-", h->val);
+    printf("%d-", h->value);
     display(h->next);
 }
 
@@ -75,7 +75,7 @@ struct ListNode* newnode(int x)
     if (n == NULL)
         return NULL;
 
-    n->val = x;
+    n->value = x;
     n->next = NULL;
     return n;
 }

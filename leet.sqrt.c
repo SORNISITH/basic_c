@@ -6,14 +6,14 @@
 #include <threads.h>
 
 struct result_obj {
-    int value_square;
+    int valueue_square;
     int range_posible_1;
     int range_posible_2;
 };
 
 void display_obj_result(struct result_obj* x)
 {
-    printf("square : %d\n", x->value_square);
+    printf("square : %d\n", x->valueue_square);
     printf("POSIBLE 1 : %d\n", x->range_posible_1);
     printf("POSIBLE 2 : %d\n", x->range_posible_2);
 }
@@ -30,12 +30,12 @@ struct result_obj* pattern(int x)
         if (v > x / v) {
             robj->range_posible_1 = prev_square;
             robj->range_posible_2 = prev_square;
-            robj->value_square = v - 1;
+            robj->valueue_square = v - 1;
             break;
         }
         int current_square = v * v;
         if (current_square == x) {
-            robj->value_square = v;
+            robj->valueue_square = v;
             robj->range_posible_1 = current_square;
             robj->range_posible_2 = current_square;
             break;
@@ -43,7 +43,7 @@ struct result_obj* pattern(int x)
         if ((prev_square <= x && current_square >= x) || current_square >= x) {
             robj->range_posible_1 = prev_square;
             robj->range_posible_2 = current_square;
-            robj->value_square = v - 1;
+            robj->valueue_square = v - 1;
             break;
         }
         prev_square = current_square;
@@ -58,7 +58,7 @@ int sqare_root(int x)
     struct result_obj* partern_obj_ret = pattern(x);
     int a = partern_obj_ret->range_posible_1;
     int b = partern_obj_ret->range_posible_2;
-    int z = partern_obj_ret->value_square;
+    int z = partern_obj_ret->valueue_square;
 
     if (a == b) {
         result = z;

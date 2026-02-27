@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int removeElement(int* nums, int numsSize, int val);
+int removeElement(int* nums, int numsSize, int value);
 int main(int argc, char* argv[])
 {
 
@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     int ret_index = removeElement(xs, 8, 2);
     return EXIT_SUCCESS;
 }
-int removeElement(int* nums, int numsSize, int val)
+int removeElement(int* nums, int numsSize, int value)
 {
     if (numsSize <= 0) {
         return 0;
@@ -18,7 +18,7 @@ int removeElement(int* nums, int numsSize, int val)
     int index = 0;
 
     for (int i = 0; i < numsSize; i++) {
-        if (nums[i] != val) {
+        if (nums[i] != value) {
             nums[index] = nums[i];
             index++;
         }

@@ -14,6 +14,6 @@ int main(int argc, char* argv[])
         e += 1.0f / factorial;
     }
     printf("Approximation of e %.10f\n", e);
-    printf("Actual value of e:  %.10f\n", 2.7182818285);
+    printf("Actual valueue of e:  %.10f\n", 2.7182818285);
     return 0;
 }

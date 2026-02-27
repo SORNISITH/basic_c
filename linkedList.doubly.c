@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct Node {
-    int value;
+    int valueue;
     struct Node* next;
     struct Node* prev;
 } Node;
 
 Node* create_NODE(int x);
-Node* push(Node* head, int value);
+Node* push(Node* head, int valueue);
 void display_list(Node* list);
 void destroy_list(Node* list);
 
-void push_p(Node** head, int value);
+void push_p(Node** head, int valueue);
 void pop(Node** list)
 {
     if (*list == NULL) {
@@ -50,16 +50,16 @@ void display_list(Node* list)
         return;
     }
     if (list->next == NULL) {
-        printf("%d -> NULL ", list->value);
+        printf("%d -> NULL ", list->valueue);
     } else {
-        printf("%d -> ", list->value);
+        printf("%d -> ", list->valueue);
     }
     display_list(list->next);
 }
 
-Node* push(Node* head, int value)
+Node* push(Node* head, int valueue)
 {
-    Node* new_NODE = create_NODE(value);
+    Node* new_NODE = create_NODE(valueue);
     if (head == NULL) {
         return new_NODE;
     }
@@ -69,9 +69,9 @@ Node* push(Node* head, int value)
     return new_NODE;
 }
 
-void push_p(Node** head, int value)
+void push_p(Node** head, int valueue)
 {
-    Node* new_NODE = create_NODE(value);
+    Node* new_NODE = create_NODE(valueue);
     if (*head == NULL) {
         *head = new_NODE;
         return;
@@ -81,12 +81,12 @@ void push_p(Node** head, int value)
     *head = new_NODE;
 }
 
-Node* create_NODE(int value)
+Node* create_NODE(int valueue)
 {
     Node* NODE = malloc(sizeof(Node));
     if (NODE == NULL)
         return NULL;
-    NODE->value = value;
+    NODE->valueue = valueue;
     NODE->prev = NULL;
     NODE->next = NULL;
     return NODE;

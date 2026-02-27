@@ -6,25 +6,25 @@
 #define ERR_CALL (printf("LOG -> Errors Called by ,%s \n", __FUNCTION__))
 
 typedef struct Node {
-    int value;
+    int valueue;
     struct Node* left;
     struct Node* right;
 } Node;
 
-Node* new_NODE(int value);
+Node* new_NODE(int valueue);
 
-void insert(Node** root, int value)
+void insert(Node** root, int valueue)
 {
-    Node* n_NODE = new_NODE(value);
+    Node* n_NODE = new_NODE(valueue);
     if (*root == NULL) {
         Sucess_CALL;
         *root = n_NODE;
-    } else if (value >= (*root)->value) {
-        insert(&(*root)->right, value);
+    } else if (valueue >= (*root)->valueue) {
+        insert(&(*root)->right, valueue);
         free(n_NODE);
         Sucess_CALL;
-    } else if (value <= (*root)->value) {
-        insert(&(*root)->left, value);
+    } else if (valueue <= (*root)->valueue) {
+        insert(&(*root)->left, valueue);
         free(n_NODE);
         Sucess_CALL;
     }
@@ -35,7 +35,7 @@ void display_tree(Node* tree)
     if (tree == NULL) {
         return;
     }
-    printf("[%d] ->", tree->value);
+    printf("[%d] ->", tree->valueue);
     display_tree(tree->left);
     display_tree(tree->right);
 }
@@ -63,20 +63,21 @@ int main(int argc, char* argv[])
     insert(&root, 2);
     insert(&root, 30);
     insert(&root, 50);
+
     display_tree(root);
 
     free_tree(root);
     return EXIT_SUCCESS;
 }
 
-Node* new_NODE(int value)
+Node* new_NODE(int valueue)
 {
     Node* NODE = malloc(sizeof(Node));
     if (NODE == NULL) {
         ERR_CALL;
-        return new_NODE(value);
+        return new_NODE(valueue);
     }
-    NODE->value = value;
+    NODE->valueue = valueue;
     NODE->left = NULL;
     NODE->right = NULL;
     Sucess_CALL;

@@ -207,10 +207,10 @@ void read_char(char* str)
 void update_inventory(void)
 {
     display_all_inventory();
-    int val_id = -1;
+    int value_id = -1;
     printf("Enter ID to Update : ");
-    scanf("%d", &val_id);
-    int inv_id = check_id_exist(val_id);
+    scanf("%d", &value_id);
+    int inv_id = check_id_exist(value_id);
 
     if (inv_id >= 0 && inv_id <= MAX_PART) {
         int count;

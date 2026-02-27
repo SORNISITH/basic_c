@@ -76,5 +76,5 @@ void add_number(Number* num)
     printf("%zu-\n", sizeof(*num));
     num->type = DOUBLE_TYPE;
     num->u.d = 3.16;
-    printf("type-%d- value-%f", num->type, num->u.d);
+    printf("type-%d- valueue-%f", num->type, num->u.d);
 }

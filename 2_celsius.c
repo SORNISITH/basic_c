@@ -7,6 +7,6 @@ int main(int argc, char* argv[])
     printf("> Fahranheit temperature : ");
     scanf("%f", &fahrenheit);
     celsius = (fahrenheit - FREEZING_PT) * SCALE_FACTOR;
-    printf("Celsuis Equivalent : %.2f\n", celsius);
+    printf("Celsuis Equivalueent : %.2f\n", celsius);
     return 0;
 }
