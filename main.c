@@ -2,32 +2,36 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct Node {
     int value;
     uintptr_t xptr;
     struct Node* next;
 };
+
 struct LINKED_LISTED_XOR {
     struct Node* Head;
     struct Node* Tail;
 };
+
 struct LLXOR_STEP {
     uintptr_t prev;
     uintptr_t next;
     struct Node* current;
 } LLXOR_STEP;
+
 enum MODES {
     NORMAL,
     REVERSE
 };
 
-struct LINKED_LISTED_XOR*
-NEW_LIST_XOR();
-struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value);
+struct LINKED_LISTED_XOR* NEW_LIST_XOR();
+
+void LLX_pop(struct LINKED_LISTED_XOR* list);
+void LLX_push(struct LINKED_LISTED_XOR* list, int value);
 void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node* current_list), short mode);
 void LLX_KILLS(struct LINKED_LISTED_XOR* list);
-
 void LLX_display(struct LINKED_LISTED_XOR* list, short mode);
 // UTILITES
 uintptr_t X0R(uintptr_t prev, uintptr_t current);
@@ -39,12 +43,13 @@ int main()
 {
     struct LINKED_LISTED_XOR* mylist = NEW_LIST_XOR();
 
-    mylist = LLX_push(mylist, 10);
-    mylist = LLX_push(mylist, 20);
-    mylist = LLX_push(mylist, 30);
-    mylist = LLX_push(mylist, 30);
-    mylist = LLX_push(mylist, 40);
-    mylist = LLX_push(mylist, 90);
+    LLX_push(mylist, 10);
+    LLX_push(mylist, 20);
+    LLX_push(mylist, 30);
+    LLX_push(mylist, 30);
+    LLX_push(mylist, 40);
+    LLX_push(mylist, 90);
+    LLX_pop(mylist);
 
     LLX_display(mylist, NORMAL);
     printf("\n");
@@ -53,24 +58,59 @@ int main()
     return 0;
 }
 
-struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value)
+void LLX_pop(struct LINKED_LISTED_XOR* list)
+{
+    if (list != NULL) {
+        if (util_check_null_list(list->Head)) {
+            struct LLXOR_STEP controller_step;
+            struct Node* tmp = list->Head;
+            controller_step.current = list->Head;
+            controller_step.prev = 0;
+            controller_step.next = X0R(controller_step.prev, controller_step.current->xptr);
+            controller_step.current = (struct Node*)controller_step.next;
+
+            list->Head = controller_step.current;
+
+            printf("%d -- ttest\n", controller_step.current->value);
+            free(tmp);
+        }
+    }
+};
+void LLX_push(struct LINKED_LISTED_XOR* list, int value)
 {
     struct Node* new_node = malloc(sizeof(*new_node));
     new_node->value = value;
-    if (util_check_null_list(list->Head)) {
-        list->Head->xptr = X0R((uintptr_t)new_node, list->Head->xptr);
-        new_node->xptr = (uintptr_t)list->Head;
-        new_node->next = list->Head;
-        list->Head = new_node;
-    } else {
+    if (!util_check_null_list(list->Head)) {
         // init list here !
         new_node->next = nullptr;
         new_node->xptr = 0;
         list->Head = new_node;
         list->Tail = new_node;
+    } else {
+        list->Head->xptr = X0R((uintptr_t)new_node, list->Head->xptr);
+        new_node->xptr = (uintptr_t)list->Head;
+        new_node->next = list->Head;
+        list->Head = new_node;
     }
-    return list;
 }
+// struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value)
+// {
+//     struct Node* new_node = malloc(sizeof(*new_node));
+//     new_node->value = value;
+//     if (util_check_null_list(list->Head)) {
+//         list->Head->xptr = X0R((uintptr_t)new_node, list->Head->xptr);
+//         new_node->xptr = (uintptr_t)list->Head;
+//         new_node->next = list->Head;
+//         list->Head = new_node;
+//     } else {
+//         // init list here !
+//         new_node->next = nullptr;
+//         new_node->xptr = 0;
+//         list->Head = new_node;
+//         list->Tail = new_node;
+//     }
+//     return list;
+// }
 
 void LLX_KILLS(struct LINKED_LISTED_XOR* list)
 {
@@ -120,6 +160,7 @@ struct LINKED_LISTED_XOR* NEW_LIST_XOR()
     l->Tail = NULL;
     return l;
 }
+
 uintptr_t X0R(uintptr_t prev, uintptr_t current)
 {
     return prev ^ current;
