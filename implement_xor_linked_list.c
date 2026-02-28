@@ -14,6 +14,7 @@ struct LINKED_LISTED_XOR { // storage for front and rear
     struct Node* Head;
     struct Node* Tail;
 };
+
 struct LLX_STEP_CONTROLLER { // controll temp movement of node
     uintptr_t prev_xptr;
     uintptr_t current_xptr;
@@ -22,6 +23,7 @@ struct LLX_STEP_CONTROLLER { // controll temp movement of node
     struct Node* current_node;
     struct Node* next_node;
 } LLX_STEP_CONTROLLER;
+
 enum MODES {
     NORMAL,
     REVERSE,
@@ -47,15 +49,15 @@ int main()
 {
     struct LINKED_LISTED_XOR* mylist = NEW_LIST_XOR();
 
-    LLX_push(mylist, 10);
-    LLX_push(mylist, 10);
-    LLX_push(mylist, 10);
+    LLX_pop(mylist);
     // LLX_push(mylist, 80);
     // LLX_push(mylist, 40);
     // LLX_push(mylist, 90);
-    LLX_pop(mylist);
+    for (int i = 1; i <= 1000000; i++) {
+        LLX_push(mylist, i + i);
+    }
 
-    LLX_display(mylist, NORMAL);
+    LLX_display(mylist, REVERSE);
 
     printf("\n");
     // LLX_display(mylist, REVERSE);
@@ -116,24 +118,6 @@ void LLX_push(struct LINKED_LISTED_XOR* list, int value)
     }
     list->size++;
 }
-// struct LINKED_LISTED_XOR* LLX_push(struct LINKED_LISTED_XOR* list, int value)
-// {
-//     struct Node* new_node = malloc(sizeof(*new_node));
-//     new_node->value = value;
-//     if (util_check_null_list(list->Head)) {
-//         list->Head->xptr = X0R((uintptr_t)new_node, list->Head->xptr);
-//         new_node->xptr = (uintptr_t)list->Head;
-//         new_node->next = list->Head;
-//         list->Head = new_node;
-//     } else {
-//         // init list here !
-//         new_node->next = nullptr;
-//         new_node->xptr = 0;
-//         list->Head = new_node;
-//         list->Tail = new_node;
-//     }
-//     return list;
-// }
 
 void LLX_KILLS(struct LINKED_LISTED_XOR* list)
 {
@@ -197,7 +181,7 @@ uintptr_t X0R(uintptr_t prev_node, uintptr_t current_xptr)
 void util_print_current_value(struct Node* current_list)
 {
     if (util_check_null_list(current_list)) {
-        printf("%p : %d -> ", current_list, current_list->value);
+        printf("%d -> ", current_list->value);
     }
 }
 
