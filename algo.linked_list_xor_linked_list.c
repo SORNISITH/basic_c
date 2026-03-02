@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+// TODO : workinhg enque and deque
 struct Node {
     int value;
     uintptr_t xptr; // using xor  new_node ^ prev_node_xptr
@@ -34,9 +35,9 @@ enum MODES {
 
 struct LINKED_LISTED_XOR* NEW_LIST_XOR(); // create lists
 
+void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node* current_list), short mode);
 void LLX_pop(struct LINKED_LISTED_XOR* list);
 void LLX_push(struct LINKED_LISTED_XOR* list, int value); // insert value to list
-void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node* current_list), short mode);
 void LLX_KILLS(struct LINKED_LISTED_XOR* list);
 void LLX_display(struct LINKED_LISTED_XOR* list, short mode);
 // UTILITES
@@ -60,7 +61,7 @@ int main()
     LLX_display(mylist, REVERSE);
 
     printf("\n");
-    // LLX_display(mylist, REVERSE);
+    // LLX_display(mylist, NORMAL);
     LLX_KILLS(mylist);
     return 0;
 }
@@ -159,6 +160,7 @@ void LLX_LOOP_NEXT_STEP(struct LINKED_LISTED_XOR* list, void (*func)(struct Node
         while (controll.current_node) {
             controll.next_xptr = X0R(controll.prev_xptr, controll.current_node->xptr);
             controll.prev_xptr = (uintptr_t)controll.current_node;
+            // paste external funtion here
             func(controll.current_node);
             controll.current_node = (struct Node*)controll.next_xptr;
         }
@@ -175,6 +177,8 @@ struct LINKED_LISTED_XOR* NEW_LIST_XOR()
 
 uintptr_t X0R(uintptr_t prev_node, uintptr_t current_xptr)
 {
+    // take prev node convert to uintptr type
+    // @ret  address of next node ,:
     return prev_node ^ current_xptr;
 }
 
