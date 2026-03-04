@@ -1,15 +1,12 @@
 #include <stdio.h>
-int gcd(int m, int n)
+int main()
 {
-    while (n != 0) {
-        int temp = n;
-        n = m % n;
-        m = temp;
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            int index = (3 - row - 1) * 3 + col + 1;
+            printf("%d", index);
+        }
+        printf("\n");
     }
-    return m;
-}
-int main(int argc, char* argv[])
-{
-    printf("\n%d", gcd(35, 10));
     return 0;
 }

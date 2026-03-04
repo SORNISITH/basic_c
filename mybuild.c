@@ -7,6 +7,7 @@ void cmd(char* f)
     system("clear");
     system(f);
 }
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     char f2[] = "gcc -std=c23 -Wall -Wvla -Wextra -ggdb ";
