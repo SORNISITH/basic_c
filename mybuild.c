@@ -5,6 +5,7 @@
 void cmd(char* f)
 {
     system("clear");
+    puts(f);
     system(f);
 }
 
