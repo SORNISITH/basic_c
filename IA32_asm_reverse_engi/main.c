@@ -1,7 +1,0 @@
-#include <stdio.h>
-int main(int argc, char* argv[])
-{
-    int x = 0xabfdae21;
-    printf("%x", x & 0x21);
-    return 0;
-}
