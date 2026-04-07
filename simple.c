@@ -4,3 +4,5 @@ int simple(int* xp, int y)
     *xp = y;
     return x;
 }
+
+// picoCTF{b1scu1ts_4nd_gr4vy_ac5832c}
