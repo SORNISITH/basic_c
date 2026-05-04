@@ -16,6 +16,7 @@ void display_obj_result(struct result_obj* x)
     printf("POSIBLE 1 : %d\n", x->range_posible_1);
     printf("POSIBLE 2 : %d\n", x->range_posible_2);
 }
+
 struct result_obj* pattern(int x)
 {
 
@@ -51,6 +52,7 @@ struct result_obj* pattern(int x)
     return robj;
 }
 
+
 int sqare_root(int x)
 {
     double result = 0;
@@ -75,6 +77,7 @@ int sqare_root(int x)
     free(partern_obj_ret);
     return (int)result;
 }
+
 double mySqrt(double x)
 {
     if (x < 2)
@@ -91,6 +94,8 @@ double mySqrt(double x)
 
     return guess;
 }
+
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     double x = mySqrt(899933333333333);

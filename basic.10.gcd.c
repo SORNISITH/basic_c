@@ -31,6 +31,7 @@ int euclid_gcd(int u, int v)
     }
     return v;
 }
+
 int gcd_cal(int m, int n)
 {
     int temp;

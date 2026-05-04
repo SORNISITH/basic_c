@@ -80,7 +80,6 @@ void push_p(Node** head, int valueue)
     (*head)->prev = new_NODE;
     *head = new_NODE;
 }
-
 Node* create_NODE(int valueue)
 {
     Node* NODE = malloc(sizeof(Node));

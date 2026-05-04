@@ -13,7 +13,6 @@ int main(int argc, char* argv[])
     //     17, 99, 34, 1, 58, 76, 12, 83, 27, 50,
     //     94, 6, 71, 39, 18, 85
     // };
-
     printf("-init \t\t\t=  ");
     p_arr_number(0, SIZE - 1, arr);
     printf("\n");
@@ -36,7 +35,6 @@ void selection_sort(int len, int arr[])
     }
     selection_sort(len - 1, arr);
 }
-
 void swap(int* a, int* b)
 {
     int temp = *a;

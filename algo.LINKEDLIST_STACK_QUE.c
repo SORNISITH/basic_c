@@ -37,6 +37,11 @@ int main(int argc, char* argv[])
     push(newstr, "mypush", 10);
     push(newstr, "mypush", 10);
     push(newstr, "mypush", 10);
+    push(newstr, "mypush", 10);
+    push(newstr, "mypush", 10);
+    push(newstr, "mypush", 10);
+    push(newstr, "mypush", 10);
+    push(newstr, "mypush", 10);
     push(newstr, "secound mypush", 20);
     push(newstr, "last mypush", 15);
     enque(newstr, "enque", 30);

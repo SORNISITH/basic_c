@@ -2,3 +2,5 @@ run
 a.out
 .gdb_history
 .gdbinit
+disk
+leak

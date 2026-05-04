@@ -17,11 +17,13 @@ double myPow(double x, int n)
         return h * h * x;
     }
 }
+
 int main(int argc, char* argv[])
 {
-    double x = myPow(2.0000, 10);
-    printf("%f", x);
-    int z = 10;
-    printf("%d", z & 1);
-    return 0;
+  double x = myPow(2.0000, 10);
+  printf("%f", x);
+  int y =20000;
+  int z = 10;
+  printf("%d", z & 1);
+  return 0;
 }
