@@ -1,1 +1,3 @@
-sor nisith
+Hero Some Example of C
+
+beginer learn
